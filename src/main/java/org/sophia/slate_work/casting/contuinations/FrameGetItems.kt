@@ -20,7 +20,6 @@ import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexpose.iotas.ItemStackIota
 import net.fabricmc.fabric.impl.transfer.transaction.TransactionManagerImpl
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemStack
@@ -32,6 +31,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.math.Vec3d
 import org.sophia.slate_work.misc.CircleHelper
+import ram.talia.moreiotas.api.casting.iota.ItemStackIota
 import java.util.*
 
 @Suppress("UnstableApiUsage", "DATA_CLASS_INVISIBLE_COPY_USAGE_WARNING")
@@ -95,7 +95,7 @@ class FrameGetItems(
         }
 
         val cont = if (isFirst != JankyMaybe.LAST){
-            stack.add(ItemStackIota(slot!!.item.toStack(if (slot.count > Int.MAX_VALUE) Int.MAX_VALUE else slot.count.toInt())))
+            stack.add(ItemStackIota.createFiltered(slot!!.item.toStack(if (slot.count > Int.MAX_VALUE) Int.MAX_VALUE else slot.count.toInt())))
              when (isFirst){
                 JankyMaybe.PENULTIMATE -> {
                     continuation

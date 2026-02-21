@@ -6,9 +6,9 @@ import at.petrak.hexcasting.api.casting.eval.env.CircleCastEnv
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.mishaps.circle.MishapNoSpellCircle
-import miyucomics.hexpose.iotas.ItemStackIota
 import net.minecraft.nbt.NbtHelper
 import org.sophia.slate_work.blocks.entities.HotbarLociEntity
+import ram.talia.moreiotas.api.casting.iota.ItemStackIota
 
 object OpGetItems : ConstMediaAction {
     override val argc: Int
@@ -26,7 +26,7 @@ object OpGetItems : ConstMediaAction {
         val list = ArrayList<Iota>()
         if (entity is HotbarLociEntity){
             for (z in entity.stacks){
-                list.add(ItemStackIota(z))
+                list.add(ItemStackIota.createFiltered(z))
             }
         }
         return listOf(ListIota(list))

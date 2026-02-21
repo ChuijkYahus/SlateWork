@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.iota.NullIota;
 import at.petrak.hexcasting.common.lib.HexSounds;
 import com.mojang.datafixers.util.Pair;
-import miyucomics.hexpose.iotas.TextIota;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -28,6 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import org.sophia.slate_work.misc.ICircleSpeedValue;
 import org.sophia.slate_work.mixins.MixinCircleExecInvoker;
 import org.sophia.slate_work.registries.BlockRegistry;
+import ram.talia.moreiotas.api.casting.iota.StringIota;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,13 +36,13 @@ public class ListeningImpetusEntity extends BlockEntityAbstractImpetus implement
     public static final String DEFAULT = "You know, people dont need to know that this is the default string for these. Like, I just need to check if this matches this to see if its blank";
     private String string = DEFAULT;
     private EntityIota playerIota = null;
-    private TextIota textIota = null;
+    private StringIota textIota = null;
 
     public ListeningImpetusEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(BlockRegistry.LISTENING_IMPETUS_ENTITY, pWorldPosition, pBlockState);
     }
 
-    public void setIotas(EntityIota player, TextIota text){
+    public void setIotas(EntityIota player, StringIota text){
         this.textIota = text;
         this.playerIota = player;
     }
@@ -145,20 +145,20 @@ public class ListeningImpetusEntity extends BlockEntityAbstractImpetus implement
 
     @Override
     public @Nullable NbtCompound readIotaTag() {
-        return (NbtCompound) new TextIota(Text.literal(this.string)).serialize();
+        return (NbtCompound) StringIota.makeUnchecked(this.string).serialize();
     }
 
     @Override
     public @Nullable Iota readIota(ServerWorld world) {
-        return new TextIota(Text.literal(this.string));
+        return StringIota.makeUnchecked(this.string);
     }
 
     @Override
     public boolean writeIota(@Nullable Iota iota, boolean simulate) {
-        if (iota instanceof TextIota text){
-            if (!text.getText().getString().isBlank()){
+        if (iota instanceof StringIota text){
+            if (!text.getString().isBlank()){
                 if (!simulate) {
-                    this.string = text.getText().getString();
+                    this.string = text.getString();
                     this.sync();
                 }
                 return true;

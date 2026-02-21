@@ -20,7 +20,6 @@ import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.api.utils.serializeToNBT
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexpose.iotas.ItemStackIota
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtHelper
@@ -28,6 +27,7 @@ import net.minecraft.nbt.NbtList
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import org.sophia.slate_work.misc.CircleHelper
+import ram.talia.moreiotas.api.casting.iota.ItemStackIota
 
 // Almost exactly like FrameGetItems, but it returns early/with only bool!
 @Suppress("UnstableApiUsage", "DATA_CLASS_INVISIBLE_COPY_USAGE_WARNING")
@@ -84,7 +84,7 @@ class FrameCheckItems(
         }
 
         val cont = if (isFirst != JankyMaybe.LAST) {
-            stack.add(ItemStackIota(slot!!.item.toStack(if (slot.count > Int.MAX_VALUE) Int.MAX_VALUE else slot.count.toInt())))
+            stack.add(ItemStackIota.createFiltered(slot!!.item.toStack(if (slot.count > Int.MAX_VALUE) Int.MAX_VALUE else slot.count.toInt())))
             when (isFirst){
                 JankyMaybe.PENULTIMATE -> {
                     continuation

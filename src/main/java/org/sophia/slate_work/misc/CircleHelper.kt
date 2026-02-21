@@ -6,18 +6,17 @@ import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.utils.putCompound
-import miyucomics.hexpose.iotas.IdentifierIota
-import miyucomics.hexpose.iotas.ItemStackIota
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtHelper
-import net.minecraft.registry.Registries
 import net.minecraft.server.world.ServerWorld
 import org.sophia.slate_work.Slate_work.LOGGER
 import org.sophia.slate_work.blocks.entities.SentinelLociEntity
 import org.sophia.slate_work.blocks.entities.StorageLociEntity
+import org.sophia.slate_work.misc.CircleHelper.ItemSlot
+import ram.talia.moreiotas.api.casting.iota.ItemStackIota
 
 @Suppress("UnstableApiUsage")
 object CircleHelper {
@@ -122,10 +121,10 @@ object CircleHelper {
 
     fun List<Iota>.getItemVariant(idx: Int, argc: Int = 0): ItemVariant? {
         val z = this.getOrElse(idx) { throw MishapNotEnoughArgs(idx + 1, this.size) }
-        if (z is IdentifierIota && Registries.ITEM.containsId(z.identifier)) {
-            return ItemVariant.of(Registries.ITEM.get(z.identifier))
-        } else if (z is ItemStackIota) {
-            return ItemVariant.of(z.stack.item,z.stack.nbt)
+        //if (z is Item && Registries.ITEM.containsId(z.identifier)) {
+            //return ItemVariant.of(Registries.ITEM.get(z.identifier)) // Normal:tm: comments
+        /*} else*/ if (z is ItemStackIota) {
+            return ItemVariant.of(z.itemStack.item,z.itemStack.nbt)
         } else if (z is NullIota){
             return null
         }

@@ -11,8 +11,8 @@ resource_dirs = [  # top takes priority
     { path="{$_common.src}/main/generated", required=false },
     # other hexdoc plugins
     { modid="hexcasting" },
+    { modid="moreiotas" },
     { modid="minecraft" },
-    { modid="hexpose" },
     { modid="hexdoc" },
 ]
 export_dir = "src/hexdoc_slate_work/_export/generated"
@@ -34,8 +34,8 @@ package = "{src}/main/java/org/sophia/slate_work"
 icon = "icon.png"
 include = [
     "slate_work",
+    "moreiotas",
     "hexcasting",
-    "hexpose",
     "hexdoc",
 ]
 

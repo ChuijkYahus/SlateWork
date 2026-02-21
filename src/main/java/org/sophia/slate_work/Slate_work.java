@@ -7,7 +7,6 @@ import at.petrak.hexcasting.interop.HexInterop;
 import com.mojang.serialization.Codec;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import miyucomics.hexpose.iotas.TextIota;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
@@ -36,6 +35,7 @@ import org.sophia.slate_work.registries.BlockRegistry;
 import org.sophia.slate_work.registries.FrameRegistry;
 import org.sophia.slate_work.registries.PatternRegistry;
 import org.sophia.slate_work.registries.AttributeRegistry;
+import ram.talia.moreiotas.api.casting.iota.StringIota;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +81,7 @@ public class Slate_work implements ModInitializer {
                         var entity = z.entity().get();
                         String string = z.string().substring(entity.getString().length()).stripLeading();
                         if (string.isBlank()) string = " ";
-                        entity.setIotas(new EntityIota(sender), new TextIota(Text.literal(string)));
+                        entity.setIotas(new EntityIota(sender), StringIota.makeUnchecked(string));
                         entity.startExecution(sender);
                         entity.sync();
                     }

@@ -3,7 +3,6 @@ package org.sophia.slate_work.blocks.impetus;
 import at.petrak.hexcasting.api.block.circle.BlockAbstractImpetus;
 import at.petrak.hexcasting.common.lib.HexSounds;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import miyucomics.hexpose.iotas.TextIota;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -20,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.sophia.slate_work.saving.Listeners;
+import ram.talia.moreiotas.api.casting.iota.StringIota;
 
 public class ListeningImpetus extends BlockAbstractImpetus {
 
@@ -68,8 +68,8 @@ public class ListeningImpetus extends BlockAbstractImpetus {
                 var datumItem = IXplatAbstractions.INSTANCE.findDataHolder(usedStack);
                 if (datumItem != null){
                     var data = datumItem.readIota(sLevel);
-                    if (data instanceof TextIota text){
-                        entity.setString(text.getText().getString());
+                    if (data instanceof StringIota text){
+                        entity.setString(text.getString());
                         entity.sync();
                         sLevel.playSound(null, pos, HexSounds.IMPETUS_REDSTONE_DING, SoundCategory.BLOCKS, 1f, 1f);
                         return ActionResult.SUCCESS;
