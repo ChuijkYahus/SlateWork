@@ -61,7 +61,7 @@ public abstract class MixinCircleEnv extends CastingEnvironment{
         return null;
     }
 
-    @Inject(method = "getUsableStacks", at = @At("RETURN"), cancellable = true, remap = false)
+    @Inject(method = "getUsableStacks", at = @At("HEAD"), cancellable = true, remap = false)
     private void slate_work$getUsableStacks(CastingEnvironment.StackDiscoveryMode mode, CallbackInfoReturnable<List<ItemStack>> cir){
         var data = this.execState.currentImage.getUserData();
         if (world.getBlockEntity(NbtHelper.toBlockPos(data.getCompound("hotbar_loci"))) instanceof HotbarLociEntity entity){
@@ -69,20 +69,22 @@ public abstract class MixinCircleEnv extends CastingEnvironment{
             var list = new ArrayList<>(entity.getStacksSorted());
             list.addAll(cir.getReturnValue());
             cir.setReturnValue(list);
+            cir.cancel();
         }
     }
 
-    @Inject(method = "getPrimaryStacks", at = @At("RETURN"), cancellable = true, remap = false)
+    @Inject(method = "getPrimaryStacks", at = @At("HEAD"), cancellable = true, remap = false)
     private void slate_work$gePrimaryStacks(CallbackInfoReturnable<List<HeldItemInfo>> cir){
         var data = this.execState.currentImage.getUserData();
         if (world.getBlockEntity(NbtHelper.toBlockPos(data.getCompound("hotbar_loci"))) instanceof HotbarLociEntity entity){
             var list = new ArrayList<>(cir.getReturnValue()); //makes it Mutable
             list.add(new HeldItemInfo(entity.getCurrentSlot(), Hand.OFF_HAND));
             cir.setReturnValue(list);
+            cir.cancel();
         }
     }
 
-    @Inject(method = "replaceItem", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "replaceItem", at = @At("HEAD"), cancellable = true)
     private void slate_work$replaceItem(Predicate<ItemStack> stackOk, ItemStack replaceWith, @Nullable Hand hand, CallbackInfoReturnable<Boolean> cir){
         if (cir.getReturnValue()) return;
         var data = this.execState.currentImage.getUserData();
@@ -93,6 +95,7 @@ public abstract class MixinCircleEnv extends CastingEnvironment{
                     entity.setStack(slot, replaceWith);
                     entity.sync();
                     cir.setReturnValue(true);
+                    cir.cancel();
                     return;
                 }
                 slot++;
