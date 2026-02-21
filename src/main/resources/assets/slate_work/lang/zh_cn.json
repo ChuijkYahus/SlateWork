@@ -172,7 +172,7 @@
   "slate_work.page.impeti.intro": "在我深入$(thing)觉醒/$的旅途中，我在我意念的深处发现了被锁定的全新$(l:greatwork/impetus)促动石/$。自然为何要隐藏这些设计和蓝图呢？也许，它认为我无法运用它们？就连$(thing)觉醒/$之后也不行？又或者，是它们无法在我$(thing)觉醒/$后存在？$(br2)无论是为什么，我现在都可以使用它们了。",
   "slate_work.page.impeti.filler": "$(o)在搭建法术环时，有必要引入一项经过仔细计算的翘曲度，从环首到环尾的总量大约只需几厘米；这是为抵消地球的曲率。红色和绿色的信标代表各关键环核，也用于标记能量在环中流动的确切路径。",
   "slate_work.page.impeti.listener": "释放并概念化的首个设计是$(item)图书管理员促动石/$。它能将图书管理员对词汇的运用能力转变成翻译和理解我言语的工具。",
-  "slate_work.page.impeti.listener_cont": "使用之前，必须先为$(item)促动石/$绑定“呼名”，也即对$(item)促动石/$使用包含$(l:patterns/string)文本 iota/$ 的$(item)核心/$等物品。这之后，若有人在距$(item)促动石/$ 16 格内（使用$(l:items/whispering_stone)传语之石/$时距离可更远）说出了以该呼名起始的消息，该消息即会被静默，同时启动$(item)图书管理员促动石/$；其栈以消息剩余部分和发出消息的玩家起始。还好，它$(o)不会/$以该玩家的名义施法。最后，它可给予以$(item)促动石/$中心、16 格半径的影响范围。",
+  "slate_work.page.impeti.listener_cont": "使用之前，必须先为$(item)促动石/$绑定“呼名”，也即对$(item)促动石/$使用包含$(l:patterns/strings)文本 iota/$ 的$(item)核心/$等物品。这之后，若有人在距$(item)促动石/$ 16 格内（使用$(l:items/whispering_stone)传语之石/$时距离可更远）说出了以该呼名起始的消息，该消息即会被静默，同时启动$(item)图书管理员促动石/$；其栈以消息剩余部分和发出消息的玩家起始。还好，它$(o)不会/$以该玩家的名义施法。最后，它可给予以$(item)促动石/$中心、16 格半径的影响范围。",
 
   "slate_work.entry.whispering": "传语之石",
   "slate_work.page.whispering.whispering_stone": "在完成$(l:greatwork/listener_impetus#slate_work:listener)图书管理员促动石/$的制造之后，我发觉，应当要有从更远的地方“传达”消息的方法。此时我灵光一闪：把$(item)石板/$、作为绑定触媒的几撮$(item)紫水晶粉/$、一片$(item)回响碎片/$组合起来，所得的设备能在持有时监听我说的话。",
