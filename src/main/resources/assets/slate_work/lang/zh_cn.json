@@ -242,7 +242,7 @@
   "hexcasting.mishap.circle.pocket_simulator_required": "%s处需要一个激活的口袋模拟器",
   "hexcasting.mishap.invalid_value.simpler_iota": "一个更简单的iota",
   "hexcasting.mishap.invalid_value.axis_vector_sw": "一个单位向量",
-  "hexcasting.mishap.invalid_value.type_or_null": "物品类型或Null",
+  "hexcasting.mishap.invalid_value.type_or_null": "一个物品类型或Null",
 
   "hexcasting.mishap.no_storage_loci_ran": "未找到已激活的容具",
   "hexcasting.mishap.list_length": "需要包含%s个元素的列表，而实际包含了%s个",
